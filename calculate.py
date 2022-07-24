@@ -24,5 +24,56 @@ python calculate.py 100-20 -> 80
 python calculate.py 4*4 -> 16
 python calculate.py 25/2 -> 12.5
 Заборонено використовувати eval для обчислення результату.
-Повинна бути створена і використана функція обчислення def calc(left_operand, 
-right_operand, operation) яка повертає результат арифметичного обчислення. """
+Повинна бути створена і використана функція обчислення def calc(left_operand, right_operand, operation) 
+яка повертає результат арифметичного обчислення. """
+
+import sys
+
+print(sys.argv)
+
+if len(sys.argv) != 4:
+    print('Arg len should be 4')
+    sys.exit()
+
+
+left_operand = sys.argv[1]
+right_operand = sys.argv[3]
+
+operation = sys.argv[2]
+
+allowed_operations = ['+', '-', '/', '*', '%']
+
+if operation not in allowed_operations:
+    print('Operation is not allowed')
+    sys.exit()
+try:
+    left_operand = int(left_operand)
+    right_operand = int(right_operand)
+except ValueError:
+    print('Left and Right operands must be int')
+    sys.exit()
+
+if operation == '/' and right_operand == 0:
+    print('Division by zero is not allowed')
+    sys.exit()
+
+
+match operation:
+    case '+':
+        print(left_operand + right_operand)
+    case '-':
+        print(left_operand - right_operand)
+    case '*':
+        print(left_operand * right_operand)
+    case '/':
+        print(left_operand / right_operand)
+    case '%':
+        print(left_operand % right_operand)
+
+
+    
+
+
+
+
+
